@@ -253,6 +253,7 @@
       "name": "@kilocode/kilo-memory",
       "version": "7.3.45",
       "dependencies": {
+        "effect": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
