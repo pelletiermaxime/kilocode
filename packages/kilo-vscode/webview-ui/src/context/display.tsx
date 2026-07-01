@@ -12,7 +12,7 @@ import {
 import { useConfig } from "./config"
 import { useVSCode } from "./vscode"
 import type { ExtensionMessage } from "../types/messages"
-import { applyFontSize, clampFontSize, readFontSize } from "../font-size"
+import { applyDisplaySettings, applyFontSize, clampFontSize, readFontSize } from "../font-size"
 
 interface DisplayContextValue {
   reasoningAutoCollapse: Accessor<boolean>
@@ -42,6 +42,7 @@ export const DisplayProvider: ParentComponent = (props) => {
     if (message.type === "ready" && message.fontSize !== undefined) setFontSizeSignal(clampFontSize(message.fontSize))
     if (message.type === "fontSizeChanged") setFontSizeSignal(clampFontSize(message.fontSize))
     if (message.type === "throughputSettingLoaded") setThroughputVisible(Boolean(message.visible))
+    if (message.type === "displaySettingsChanged") applyDisplaySettings(message.settings)
   })
 
   createEffect(() => {

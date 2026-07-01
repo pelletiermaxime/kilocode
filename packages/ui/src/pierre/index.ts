@@ -123,6 +123,18 @@ const unsafeCSS = `
   );
 }
 
+[data-diff] [data-line][data-line-type='change-addition'] [data-code],
+[data-diff] [data-line][data-line-type='change-additions'] [data-code],
+[data-diff] [data-line][data-line-type='change-addition'] [data-code] *,
+[data-diff] [data-line][data-line-type='change-additions'] [data-code] * {
+  color: var(--kilo-diff-fg-addition) !important;
+}
+
+[data-diff] [data-line][data-line-type='change-deletion'] [data-code],
+[data-diff] [data-line][data-line-type='change-deletion'] [data-code] * {
+  color: var(--kilo-diff-fg-deletion) !important;
+}
+
 [data-diff-header],
 [data-diff],
 [data-file] {
@@ -151,9 +163,12 @@ ${lineCommentStyles}
 
 `
 
-export function createDefaultOptions<T>(style: FileDiffOptions<T>["diffStyle"]) {
+export function createDefaultOptions<T>(
+  style: FileDiffOptions<T>["diffStyle"],
+  theme: FileDiffOptions<T>["theme"] = KILO_DIFF_THEME, // kilocode_change
+) {
   return {
-    theme: KILO_DIFF_THEME, // kilocode_change
+    theme, // kilocode_change
     themeType: "system",
     disableLineNumbers: false,
     overflow: "wrap",
@@ -173,8 +188,8 @@ export function createDefaultOptions<T>(style: FileDiffOptions<T>["diffStyle"]) 
 
 export const styleVariables = {
   "--diffs-font-family": "var(--font-family-mono)",
-  "--diffs-font-size": "var(--font-size-small)",
-  "--diffs-line-height": "24px",
+  "--diffs-font-size": "var(--kilo-diff-font-size, var(--font-size-small))",
+  "--diffs-line-height": "var(--kilo-diff-line-height, 24px)",
   "--diffs-tab-size": 2,
   "--diffs-font-features": "var(--font-family-mono--font-feature-settings)",
   "--diffs-header-font-family": "var(--font-family-sans)",

@@ -77,6 +77,16 @@ export interface FontSizeChangedMessage {
   fontSize: number
 }
 
+export interface DisplaySettingsChangedMessage {
+  type: "displaySettingsChanged"
+  settings: {
+    chatReadableWidth: number
+    diffFontSize: number
+    diffPalette: string
+    diffSyntaxTheme: string
+  }
+}
+
 export interface GitStatusMessage {
   type: "gitStatus"
   repo: boolean
@@ -1256,6 +1266,7 @@ export interface ClipboardWriteResultMessage {
 export type ExtensionMessage =
   | ReadyMessage
   | FontSizeChangedMessage
+  | DisplaySettingsChangedMessage
   | GitStatusMessage
   | ConnectionStateMessage
   | ErrorMessage

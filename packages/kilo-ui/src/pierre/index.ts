@@ -33,10 +33,20 @@ const css = `
   --diffs-computed-diff-line-bg: var(--surface-diff-delete-weaker, var(--diffs-bg-deletion-number));
   --diffs-computed-selected-line-bg: var(--surface-diff-delete-weaker, var(--diffs-bg-deletion-number));
 }
+[data-diff] [data-line][data-line-type='change-addition'] [data-code],
+[data-diff] [data-line][data-line-type='change-additions'] [data-code],
+[data-diff] [data-line][data-line-type='change-addition'] [data-code] *,
+[data-diff] [data-line][data-line-type='change-additions'] [data-code] * {
+  color: var(--kilo-diff-fg-addition) !important;
+}
+[data-diff] [data-line][data-line-type='change-deletion'] [data-code],
+[data-diff] [data-line][data-line-type='change-deletion'] [data-code] * {
+  color: var(--kilo-diff-fg-deletion) !important;
+}
 `
 
-export function createDefaultOptions<T>(style: FileDiffOptions<T>["diffStyle"]) {
-  const opts = defaults<T>(style)
+export function createDefaultOptions<T>(style: FileDiffOptions<T>["diffStyle"], theme?: string) {
+  const opts = defaults<T>(style, theme)
   return {
     ...opts,
     lineDiffType: LINE_DIFF_TYPE,

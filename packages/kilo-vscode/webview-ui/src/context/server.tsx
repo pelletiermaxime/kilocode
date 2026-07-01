@@ -6,7 +6,7 @@
 import { createContext, useContext, createSignal, onMount, onCleanup, ParentComponent, Accessor } from "solid-js"
 import { useVSCode } from "./vscode"
 import type { ConnectionState, ServerInfo, ProfileData, DeviceAuthState, ExtensionMessage } from "../types/messages"
-import { applyFontSize } from "../font-size"
+import { applyDisplaySettings, applyFontSize } from "../font-size"
 
 interface ServerContextValue {
   connectionState: Accessor<ConnectionState>
@@ -51,6 +51,7 @@ export const ServerProvider: ParentComponent = (props) => {
   const fontSub = vscode.onMessage((m: ExtensionMessage) => {
     if (m.type === "ready" && m.fontSize !== undefined) applyFontSize(m.fontSize)
     if (m.type === "fontSizeChanged") applyFontSize(m.fontSize)
+    if (m.type === "displaySettingsChanged") applyDisplaySettings(m.settings)
   })
 
   onMount(() => {

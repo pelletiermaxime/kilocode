@@ -1,5 +1,17 @@
 [data-component="diff"] {
   content-visibility: auto;
+  --diffs-bg-addition-override: var(--kilo-diff-bg-addition);
+  --diffs-bg-addition-number-override: var(--kilo-diff-bg-addition-number);
+  --diffs-bg-addition-hover-override: var(--kilo-diff-bg-addition-hover);
+  --diffs-bg-addition-emphasis-override: var(--kilo-diff-bg-addition-emphasis);
+  --diffs-bg-context-override: var(--kilo-diff-bg-context);
+  --diffs-bg-deletion-override: var(--kilo-diff-bg-deletion);
+  --diffs-bg-deletion-number-override: var(--kilo-diff-bg-deletion-number);
+  --diffs-bg-deletion-hover-override: var(--kilo-diff-bg-deletion-hover);
+  --diffs-bg-deletion-emphasis-override: var(--kilo-diff-bg-deletion-emphasis);
+  --diffs-bg-hover-override: var(--kilo-diff-bg-hover);
+  --diffs-bg-separator-override: var(--kilo-diff-bg-separator);
+  --diffs-fg-number-override: var(--kilo-diff-fg-number);
 
   [data-slot="diff-hunk-separator-line-number"] {
     position: sticky;
