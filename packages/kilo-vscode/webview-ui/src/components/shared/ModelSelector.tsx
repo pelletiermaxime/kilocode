@@ -741,6 +741,7 @@ export const ModelSelectorBase: Component<ModelSelectorBaseProps> = (props) => {
           onOpenChange={setOpen}
           triggerAs={Button}
           triggerProps={{
+            class: "model-selector-trigger",
             variant: "secondary",
             size: "normal",
             get disabled() {
