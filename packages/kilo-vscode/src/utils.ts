@@ -18,6 +18,12 @@ export function getWebviewFontSize(): number {
   return clamp(raw)
 }
 
+export function getChatReadableWidth(): number {
+  const raw = vscode.workspace.getConfiguration("kilo-code.new").get<number>("chatReadableWidth", 132)
+  if (!Number.isFinite(raw)) return 132
+  return Math.min(220, Math.max(80, Math.round(raw)))
+}
+
 function fontStyle(): string {
   const base = getWebviewFontSize()
   const vars = SIZES.map((size) => `--kilo-font-size-${size}: ${(base * size) / 13}px;`).join("\n      ")
@@ -28,6 +34,7 @@ function fontStyle(): string {
       --font-size-small: var(--kilo-font-size-11);
       --font-size-base: var(--kilo-font-size-13);
       --font-size-large: var(--kilo-font-size-16);
+      --kilo-chat-readable-width: ${getChatReadableWidth()}ch;
     }`
 }
 

@@ -1074,6 +1074,13 @@
           "maximum": 24,
           "description": "Font size in pixels for the Kilo Code webview UI."
         },
+        "kilo-code.new.chatReadableWidth": {
+          "type": "number",
+          "default": 132,
+          "minimum": 80,
+          "maximum": 220,
+          "description": "Readable chat column width in characters for the Kilo Code webview UI."
+        },
         "kilo-code.new.browserAutomation.enabled": {
           "type": "boolean",
           "default": false,

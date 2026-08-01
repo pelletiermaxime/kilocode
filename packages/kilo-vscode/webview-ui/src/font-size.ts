@@ -25,3 +25,8 @@ export function applyFontSize(size: number) {
   root.style.setProperty("--font-size-base", "var(--kilo-font-size-13)")
   root.style.setProperty("--font-size-large", "var(--kilo-font-size-16)")
 }
+
+export function applyChatReadableWidth(width: number) {
+  const value = Number.isFinite(width) ? Math.min(220, Math.max(80, Math.round(width))) : 132
+  document.documentElement.style.setProperty("--kilo-chat-readable-width", `${value}ch`)
+}
